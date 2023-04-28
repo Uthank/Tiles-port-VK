@@ -44,12 +44,12 @@
     window['vkBridge'].send("VKWebAppInit", {})
                         .then(function (data) {
                             if (data.result) {
-								console.error(data.result);
-								console.error("VKWebAppInit index result: " + data.result);
-                                invokeSuccess();
+				console.error(data.result);
+				console.error("VKWebAppInit index result: " + data.result);
                             } else {
-                                invokeFailure(new Error('vkBridge failed to initialize index.'));
+                                console.error("vkBridge failed to initialize index.");
                             }
+    			}
 </script>
 </body>
 
