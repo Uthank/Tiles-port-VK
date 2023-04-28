@@ -40,6 +40,17 @@
       });
     }, 500); // Wait half a second before loading. Makes page more responsive on reload.
   </script>
+  <script>
+    window['vkBridge'].send("VKWebAppInit", {})
+                        .then(function (data) {
+                            if (data.result) {
+								console.error(data.result);
+								console.error("VKWebAppInit index result: " + data.result);
+                                invokeSuccess();
+                            } else {
+                                invokeFailure(new Error('vkBridge failed to initialize index.'));
+                            }
+</script>
 </body>
 
 </html>
