@@ -40,16 +40,28 @@
       });
     }, 500); // Wait half a second before loading. Makes page more responsive on reload.
   </script>
-  <script>
-    window['vkBridge'].send("VKWebAppInit", {})
-                        .then(function (data) {
-                            if (data.result) {
-				console.error(data.result);
-				console.error("VKWebAppInit index result: " + data.result);
-                            } else {
-                                console.error("vkBridge failed to initialize index.");
-                            }
-    			});
+  
+	<script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
+ 
+	<script>
+  // Отправляет событие инициализации нативному клиенту
+  vkBridge.send('VKWebAppInit');
+</script>
+
+	<script>
+	  bridge.send('VKWebAppInit')
+  .then((data) => {
+    if (data.result) {
+      // Обработка события в случае успеха
+      console.error("data.result: " + data.result);
+    } else {
+      // Ошибка
+    }
+  })
+  .catch((error) => {
+    // Обработка события в случае ошибки
+    console.error(error);
+  });
 </script>
 </body>
 
